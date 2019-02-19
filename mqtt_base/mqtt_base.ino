@@ -38,21 +38,29 @@ void callback(char* topic, byte* payload, unsigned int length) {
   Serial.println();
 
 /*EXAMPLE*/
-  if ((char)payload[0] == '1') {
-    digitalWrite(BUILTIN_LED, LOW);
-  } else {
-    digitalWrite(BUILTIN_LED, HIGH);
+  if ( strcmp(topic, mqtt_topic_in) == 0 ) { 
+   
+    if ((char)payload[0] == '0') {
+      digitalWrite(BUILTIN_LED, HIGH);
+    }
+    
+    if ((char)payload[0] == '1') {
+      digitalWrite(BUILTIN_LED, LOW);
+    }
   }
 }
 
 void reconnect() {
+  String clientId = "ESP8266Client-";
+  clientId += String(ESP.getChipId());
+
   while (!client.connected()) {
     Serial.println("Attempting MQTT connection...");
-    String clientId = "ESP8266Client-";
-    clientId += String(ESP.getChipId());
     Serial.print("Client ID:");
-    Serial.println(clientId);
-    if (client.connect(clientId.c_str()), mqtt_login,mqtt_pass) {
+    Serial.print(clientId);
+    Serial.print(mqtt_login);
+    Serial.print(mqtt_pass);
+    if (client.connect("plazmer", "student", "rtf-123")) {  //TODO: use variables 
       Serial.println("connected");
       client.publish(mqtt_topic_heartbeat, "reconnected");
       client.subscribe(mqtt_topic_in);
@@ -80,7 +88,7 @@ void loop() {
   client.loop();
 
   long now = millis();
-  if (now - lastMsg > 2000) {    //TODO: overflow long in 49 days
+  if (now - lastMsg > 30000) {    //TODO: overflow long in 49 days
     lastMsg = now;
     ++value;
     snprintf (msg, 50, "heartbeat #%ld", value);
