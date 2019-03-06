@@ -14,11 +14,11 @@
 
 1. Скачать репозиторий как ZIP
 
-![00_arduino_install_pubsub](img\en\00_arduino_install_pubsub.png)
+![00_arduino_install_pubsub](img/en/00_arduino_install_pubsub.png)
 
 2. Установить библиотеку в среду Arduino с помощью меню **Скетч > Подключить библиотеку > Добавить ZIP библиотеку**
 
-   ![00_arduino_pubsub_install](img\en\00_arduino_pubsub_install.png)
+   ![00_arduino_pubsub_install](img/en/00_arduino_pubsub_install.png)
 
 
 

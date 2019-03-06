@@ -7,9 +7,9 @@ https://mqttfx.jensd.de/
 
 После запуска следует нажать на иконку с шестерёнкой для настройки подключения к серверу.
 
-![00_mqtt_options](img\en\00_mqtt_options.png)
+![00_mqtt_options](img/en/00_mqtt_options.png)
 
-![00_mqtt_options2](img\en\00_mqtt_options2.png)
+![00_mqtt_options2](img/en/00_mqtt_options2.png)
 
 Следует:
 
@@ -18,7 +18,7 @@ https://mqttfx.jensd.de/
 3. Ввести имя сервера (предоставит инструктор)
 4. Ввести порт на сервере (предоставит инструктор)
 5. Сгенерировать уникальный ИД клиента
-6. Переключиться на ввод логина и пароля![00_mqtt_options3](img\en\00_mqtt_options3.png)
+6. Переключиться на ввод логина и пароля![00_mqtt_options3](img/en/00_mqtt_options3.png)
 
 7. Ввести логин (предоставит инструктор)
 
@@ -56,10 +56,10 @@ https://mqttfx.jensd.de/
 
 ## Помигать светодиодом по MQTT бесплатно без карточки и смс
 
-![00_mqtt_run](img\en\00_mqtt_run.png)
+![00_mqtt_run](img/en/00_mqtt_run.png)
 
 Для этого достаточно ввести имя топика, указанное в настройках прошивки в значении параметра **mqtt_topic_in**, в текстовое поле написать **0** или **1** и нажать кнопку **Publish**. Остальные настройки менять не надо.
 
 Для контроля можно подписаться на топики, указанные в параметрах **mqtt_topic_heartbeat** и **define mqtt_topic_out** на вкладке Subscribe
 
-![00_mqtt_subscribe](img\en\00_mqtt_subscribe.png)
+![00_mqtt_subscribe](img/en/00_mqtt_subscribe.png)
