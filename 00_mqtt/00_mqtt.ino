@@ -2,6 +2,10 @@
 #include <PubSubClient.h>
 #include "config.h"
 
+/* DEFINE YOUR PARAMS */
+#define mqtt_topic_status   "rtfbest/status"
+#define mqtt_topic_in     "rtfbest/led1"
+#define mqtt_topic_out    "rtfbest/status"
 
 WiFiClient espClient;
 PubSubClient client(espClient);
