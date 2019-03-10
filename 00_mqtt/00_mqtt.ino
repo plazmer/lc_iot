@@ -37,7 +37,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
   }
   Serial.println();
 
-/*EXAMPLE*/
   if ( strcmp(topic, mqtt_topic_in) == 0 ) { 
    
     if ((char)payload[0] == '0') {
@@ -91,9 +90,9 @@ void loop() {
   if (now - lastMsg > 30000) {    //TODO: overflow long in 49 days
     lastMsg = now;
     ++value;
-    snprintf (msg, 50, "heartbeat #%ld", value);
+    snprintf (msg, sizeof(msg), "heartbeat #%ld", value);
     Serial.print("Publish message: ");
     Serial.println(msg);
-    client.publish(mqtt_topic_heartbeat, msg);
+    client.publish(mqtt_topic_status, msg);
   }
 }
