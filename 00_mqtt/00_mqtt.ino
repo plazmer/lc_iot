@@ -14,10 +14,12 @@ void setup_wifi() {
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(wifi_ssid);
+  Serial.println(wifi_pass);
   WiFi.begin(wifi_ssid, wifi_pass);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    Serial.print(".");
+    Serial.println(".");
+    WiFi.printDiag(Serial);
   }
 
   randomSeed(micros());
@@ -40,7 +42,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
   if ( strcmp(topic, mqtt_topic_in) == 0 ) { 
    
     if ((char)payload[0] == '0') {
-      digitalWrite(BUILTIN_LED, HIGH);
+      digitalWrite(BUILTIN_LED, HIGH); //BUILTIN_LED has pullup resistor, HIGH = OFF, LOW = ON
     }
     
     if ((char)payload[0] == '1') {
@@ -59,9 +61,9 @@ void reconnect() {
     Serial.print(clientId);
     Serial.print(mqtt_login);
     Serial.print(mqtt_pass);
-    if (client.connect("plazmer", "student", "rtf-123")) {  //TODO: use variables 
+    if (client.connect(clientId.c_str(), mqtt_login, mqtt_pass)) {  
       Serial.println("connected");
-      client.publish(mqtt_topic_heartbeat, "reconnected");
+      client.publish(mqtt_topic_status, "reconnected");
       client.subscribe(mqtt_topic_in);
     } else {
       Serial.print("failed, rc=");
@@ -74,6 +76,8 @@ void reconnect() {
 
 void setup() {
   pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
+  //WARNING: BUILTIN_LED has pullup resistor, HIGH = OFF, LOW = ON
+  
   Serial.begin(115200);
   setup_wifi();
   client.setServer(mqtt_server, mqtt_port);
@@ -90,7 +94,7 @@ void loop() {
   if (now - lastMsg > 30000) {    //TODO: overflow long in 49 days
     lastMsg = now;
     ++value;
-    snprintf (msg, sizeof(msg), "heartbeat #%ld", value);
+    snprintf (msg, sizeof(msg), "status #%ld", value);
     Serial.print("Publish message: ");
     Serial.println(msg);
     client.publish(mqtt_topic_status, msg);
