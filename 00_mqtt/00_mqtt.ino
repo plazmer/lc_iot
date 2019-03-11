@@ -1,5 +1,6 @@
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
+//USE sample_config.h, insert real params and rename to config.h
 #include "config.h"
 
 /* DEFINE YOUR PARAMS */
