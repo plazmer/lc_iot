@@ -13,10 +13,6 @@ long lastMsg = 0;
 char msg[50];
 int value = 0;
 
-float h = dht.readHumidity();
-// Read temperature as Celsius (the default)
-float t = dht.readTemperature();
-
 void setup_wifi() {
   delay(10);
   Serial.println();
@@ -97,6 +93,7 @@ void loop() {
   client.loop();
 
   long now = millis();
+
   if (now - lastMsg > 1000) {    //TODO: overflow long in 49 days
   
     float h2 = dht.readHumidity();
