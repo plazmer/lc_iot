@@ -2,8 +2,10 @@
 #include <PubSubClient.h>
 #include "config.h"
 #include "DHT.h"
+
+#define DHTPIN 2 
 #define DHTTYPE DHT11
-#define DHTPIN 2
+DHT dht(DHTPIN, DHTTYPE);
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -91,19 +93,21 @@ void loop() {
   client.loop();
 
   long now = millis();
-  if (now - lastMsg > 30000) {    //TODO: overflow long in 49 days
+
+  if (now - lastMsg > 1000) {    //TODO: overflow long in 49 days
+  
+    float h2 = dht.readHumidity();
+    float t2 = dht.readTemperature();
+    float t_out=t2-t1;
+    if (t_out>2){
+    client.publish(mqtt_topic_temp, t_out)
+    }
+  
     lastMsg = now;
     ++value;
-    float temp = dht.readTemperature();
-    float hum = dht.readHumidity();
-    snprintf (temp, 50, "heartbeat #%ld", value);
+    snprintf (msg, 50, "heartbeat #%ld", value);
     Serial.print("Publish message: ");
-    Serial.println(temp);
-    client.publish(mqtt_topic_heartbeat, temp);
-    
-    snprintf (hum, 50, "heartbeat #%ld", value);
-    Serial.print("Publish message: ");
-    Serial.println(hum);
-    client.publish(mqtt_topic_heartbeat, hum);
+    Serial.println(msg);
+    client.publish(mqtt_topic_heartbeat, msg);
   }
 }
