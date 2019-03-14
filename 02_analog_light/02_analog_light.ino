@@ -4,9 +4,9 @@
 
 /* DEFINE YOUR PARAMS */
 #define mqtt_topic_status     "rtfbest/status"
-#define mqtt_topic_out        "rtfbest/alight"
-#define mqtt_topic_out_pwm    "rtfbest/alight_pwm"
-#define mqtt_topic_in         "rtfbest/alight_pwm_override"
+#define mqtt_topic_out        "rtfbest/alight/status"
+#define mqtt_topic_out_pwm    "rtfbest/alight/pwm_value"
+#define mqtt_topic_in         "rtfbest/alight/pwm_override"
 #define LED                   D2
 
 long lastMsgMQTT = 0;
