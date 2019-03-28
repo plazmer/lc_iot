@@ -47,6 +47,6 @@ void loop() {
     client.publish(mqtt_topic_out,msg);
     
     sprintf(msg,"PIN %i=%i", i, value);
-    Serial.print(msg);
+    Serial.println(msg);
   }
 }
