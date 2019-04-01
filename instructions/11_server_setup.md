@@ -201,10 +201,9 @@
 
     ```bash
     sudo systemctl daemon-reload
-    sudo systemctl restart nodered
+    sudo systemctl enable nodered
+    sudo systemctl restart nodered    
     ```
-
-    
 
 16. Можно заходить браузером по адресу и начинать работать: 
     http://IP_FROM_3th_STAGE:1880
