@@ -9,7 +9,7 @@
 /* DEFINE YOUR PARAMS */
 #define mqtt_topic_status "praw/status"
 #define mqtt_topic_in     "praw/led"
-#define mqtt_topic_out    "praw/btn"
+#define mqtt_topic_out    "praw/shift"
 
 
 WiFiClient espClient;
