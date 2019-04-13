@@ -30,6 +30,7 @@ void reconnect() {
     if (client.connect(clientId.c_str(), mqtt_login, mqtt_pass)) {  
       Serial.println("connected");
       client.publish(mqtt_topic_status, clientId.c_str());
+      client.subscribe(mqtt_topic_in);
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());

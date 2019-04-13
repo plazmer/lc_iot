@@ -3,6 +3,8 @@
 #include "config.h"
 #include "functions.h"
 
+
+#define BEEP 4
 int  delayMS = 10000;
 long lastMsgMQTT = 0;
 long lastLED = 0;
@@ -11,9 +13,21 @@ int value = 0;
 
 
 void callback(char* topic, byte* payload, unsigned int length) {
-//no reaction
-}
+  Serial.print("Message arrived [");
+  Serial.print(topic);
+  Serial.print("] ");
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]);
+  }
+  Serial.println();
 
+  if ( strcmp(topic, mqtt_topic_in) == 0 ) { 
+   
+    if ((char)payload[0] == '1') {
+      tone(BEEP,440,300);
+    }
+  }
+}
 
 void setup() {
   Serial.begin(115200);
@@ -29,7 +43,7 @@ void loop() {
   client.loop();
 
   if ( millis() - lastMsgMQTT > delayMS) {
-    int luminocity = 1023 - analogRead(A0);
+    int luminocity = 1024 - analogRead(A0);
     Serial.print(F("luminocity: "));
     Serial.println(luminocity);
     
