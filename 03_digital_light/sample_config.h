@@ -1,10 +1,10 @@
-#define wifi_ssid     "rtfbest"
-#define wifi_pass     "rtf-1234"
+#define wifi_ssid     "WIFI_NETWORK_NAME"
+#define wifi_pass     "WIFI_PASSWORD"
 
-#define mqtt_server     "2.remzalp.ru"
-#define mqtt_port     9976
-#define mqtt_login    "student"
-#define mqtt_pass     "rtf-123"
+#define mqtt_server     "SERVER"
+#define mqtt_port     1883
+#define mqtt_login    "MQTT_LOGIN"
+#define mqtt_pass     "MQTT_PASSWORD"
 
 #define mqtt_topic_status   "rtfbest/status"
 #define mqtt_topic_in     "rtfbest/led1"
