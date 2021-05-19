@@ -24,8 +24,8 @@
 
 0. [Подготовка](https://github.com/plazmer/lc_iot/blob/master/instructions/00_1_setup_arduino_ide.md) рабочего [места](https://github.com/plazmer/lc_iot/blob/master/instructions/00_2_mqtt_basic.md) - настройка [среды](https://github.com/plazmer/lc_iot/blob/master/instructions/00_3_mqtt_work.md) Arduino IDE, [простой](https://github.com/plazmer/lc_iot/blob/master/instructions/00_4_WEMOS_pins_vs_Arduino_pins.md) код для тестирования работы (основан на примере [github knolleary](https://github.com/knolleary/pubsubclient/blob/master/examples/mqtt_esp8266/mqtt_esp8266.ino)) в 4 частях
 
-1. [Датчик температуры и влажности на основе DHT11](../instructions/01_dht11.md) ([готовый код](../01_dht11))
-2. [Аналоговый датчик освещенности на фоторезисторе](../02_light_analog.md) ([готовый код](../02_analog_light/))
+1. [Датчик температуры и влажности на основе DHT11](instructions/01_dht11.md) ([готовый код](../01_dht11))
+2. [Аналоговый датчик освещенности на фоторезисторе](instructions/02_light_analog.md) ([готовый код](../02_analog_light/))
 3. [Цифровой датчик освещенности на фоторезисторе](https://github.com/plazmer/lc_iot/blob/master/instructions/03_light_digital.md) ([готовый код](https://github.com/plazmer/lc_iot/tree/master/03_digital_light))
 4. [Умная RGB лампа (адресные светодиоды)](https://github.com/plazmer/lc_iot/blob/master/instructions/04_rgb_led.md)
 5. [Датчик движения](<https://github.com/plazmer/lc_iot/blob/master/instructions/05_guard.md>)
